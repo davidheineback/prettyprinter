@@ -1,0 +1,31 @@
+{
+  "name": "l2",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --testTimeout=20000 --runInBand --coverage --detectOpenHandles --verbose --forceExit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.lnu.se:1dv610/student/du222aa/l2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
