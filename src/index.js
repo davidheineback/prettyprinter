@@ -1,21 +1,4 @@
-import tokenizer from '@david-heineback/tokenizer'
-import SentenceGrammar from './grammars/SentenceGrammar.js'
+import Document from './parser/Document.js'
 
-const { Tokenizer } = tokenizer
-
-
-const grammar = new SentenceGrammar()
-const tokenize = new Tokenizer(grammar, 'H.!?') 
-
-console.log(tokenize.getActiveToken())
-tokenize.setActiveTokenToNext()
-console.log(tokenize.getActiveToken())
-tokenize.setActiveTokenToNext()
-console.log(tokenize.getActiveToken())
-tokenize.setActiveTokenToNext()
-console.log(tokenize.getActiveToken())
-tokenize.setActiveTokenToNext()
-console.log(tokenize.getActiveToken())
-tokenize.setActiveTokenToNext()
-console.log(tokenize.getActiveToken())
-
+const document = new Document('Hej på dig')
+console.log(document.parse())
