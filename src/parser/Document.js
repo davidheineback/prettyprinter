@@ -7,12 +7,13 @@ const { Tokenizer } = tokenizer
 
 export default class Document {
   #grammar = new SentenceGrammar()
-  #sentences = []
+  #sentences = new Sentences()
   #currentSentence = []
   #stringToParse
   #tokenContainer
 
   constructor() {
+
   }
 
   parse(stringToParse) {
@@ -22,26 +23,30 @@ export default class Document {
     while (this.#tokenContainer.getActiveToken().tokenValue !== 'END') {
       const token = this.#tokenContainer.getActiveToken()
       this.#currentSentence.push(token.tokenValue)
-      switch(token.tokenType) {
-        case 'WORD':
-          break
-        case 'DOT':
-          this.#sentences.push({'type': 'DOT', 'sentence': this.#currentSentence})
-          this.#currentSentence = []
-          break
-        case 'EXCLAMATION':
-          this.#sentences.push({'type': 'EXCLAMATION', 'sentence': this.#currentSentence})
-          this.#currentSentence = []
-          break
-        case 'QUESTION':
-          this.#sentences.push({'type': 'QUESTION', 'sentence': this.#currentSentence})
-          this.#currentSentence = []
-          break
-        default:
-          break
+      if (token.tokenType !== 'WORD') {
+        this.#sentences.add({'type': `${token.tokenType}`, 'sentence': this.#currentSentence})
       }
+      // switch(token.tokenType) {
+      //   case 'WORD':
+      //     break
+      //   case 'DOT':
+      //     this.#sentences.add({'type': 'REGULAR', 'sentence': this.#currentSentence})
+      //     this.#currentSentence = []
+      //     break
+      //   case 'EXCLAMATION':
+      //     this.#sentences.add({'type': 'EXCLAMATION', 'sentence': this.#currentSentence})
+      //     this.#currentSentence = []
+      //     break
+      //   case 'QUESTION':
+      //     this.#sentences.add({'type': 'QUESTION', 'sentence': this.#currentSentence})
+      //     this.#currentSentence = []
+      //     break
+      //   default:
+      //     break
+      // }
         this.#tokenContainer.setActiveTokenToNext()
     }
+    return 
   }
 
   getAllSentences() {
@@ -49,8 +54,7 @@ export default class Document {
   }
 
   getAllRegularSentences() {
-    const regularSentences = this.#sentences.filter(sentence => sentence.type === 'DOT')
-    // console.log(regularSentences)
+    const regularSentences = this.#sentences.getSentences().filter(sentence => sentence.type === 'DOT')
     regularSentences.forEach(sentence => {
       let fullSentence = ''
       sentence.sentence.forEach(component => {
@@ -62,11 +66,11 @@ export default class Document {
   }
 
   getAllExclamationSentences() {
-    console.log(this.#sentences.filter(sentence => sentence.type === 'EXCLAMATION'))
+    console.log(this.#sentences.getSentences().filter(sentence => sentence.type === 'EXCLAMATION'))
   }
 
   getAllQuestionSentences() {
-    console.log(this.#sentences.filter(sentence => sentence.type === 'QUESTION'))
+    console.log(this.#sentences.getSentences().filter(sentence => sentence.type === 'QUESTION'))
   }
 
   // setNewStringToParse(stringToParse) {
