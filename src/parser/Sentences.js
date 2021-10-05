@@ -13,10 +13,6 @@ export default class Sentences {
    * @memberof Sentences
    */
   add(sentence) {
-    console.log('HEEEJ')
-    console.log(sentence)
-    console.log('HEEEJ')
-
     switch(sentence.type) {
       case 'DOT':
         this.sentences.push(new RegularSentence(sentence))
@@ -32,10 +28,9 @@ export default class Sentences {
     }
 
     this.sentences.forEach(sentence => {
-      console.log('hej')
       console.log(sentence.getSenteceAsObject())
+      console.log(sentence.getSentenceAsString())
     })
-    // this.sentences.push(sentence)
   }
 
   getSentences() {
