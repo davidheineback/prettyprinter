@@ -1,6 +1,21 @@
 export default class Sentence {
-  constructor() {
+  #sentenceObject
 
+  constructor(sentenceObject) {
+    this.#sentenceObject = sentenceObject
+    this.endCharacter 
+  }
+
+  getSenteceAsObject() {
+    return this.#sentenceObject
+  }
+
+  getSentenceAsString() {
+    let fullSentence = ''
+    this.#sentenceObject.sentence.forEach(word => {
+        fullSentence += `${word} `
+    })
+    return fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`)
   }
 
   sentenceContainsAtLeastOneWord() {
@@ -22,8 +37,6 @@ export default class Sentence {
 
   }
 
-  getSentence() {
-    // Få hela meningen som en enda sträng med “rätt” avslutande tecken(.?!) 
-  }
+
 
 }
