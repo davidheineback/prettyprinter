@@ -1,6 +1,9 @@
 import tokenizer from '@david-heineback/tokenizer'
 import SentenceGrammar from '../grammars/SentenceGrammar.js'
 import Sentences from './Sentences.js'
+import RegularSentence from './sentence/RegularSentence.js'
+import ExclamationSentence from './sentence/ExclamationSentence.js'
+import QuestionSentence from './sentence/QuestionSentence.js'
 
 
 const { Tokenizer } = tokenizer
@@ -36,14 +39,14 @@ export default class Document {
   }
 
   getAllRegularSentences() {
-    this.#sentences.getSentences().filter(sentence => sentence.type === 'DOT')
+    return this.#sentences.getSentences().filter(sentence => sentence instanceof RegularSentence)
   }
 
   getAllExclamationSentences() {
-    console.log(this.#sentences.getSentences().filter(sentence => sentence.type === 'EXCLAMATION'))
+    return this.#sentences.getSentences().filter(sentence => sentence instanceof ExclamationSentence)
   }
 
   getAllQuestionSentences() {
-    console.log(this.#sentences.getSentences().filter(sentence => sentence.type === 'QUESTION'))
+    return this.#sentences.getSentences().filter(sentence => sentence instanceof QuestionSentence)
   }
 }
