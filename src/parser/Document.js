@@ -35,7 +35,7 @@ export default class Document {
   }
 
   getAllSentences() {
-
+    return this.#sentences.getSentences()
   }
 
   getAllRegularSentences() {
