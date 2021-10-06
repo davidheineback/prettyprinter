@@ -22,12 +22,12 @@ export default class Document {
   parse(stringToParse) {
     this.#stringToParse = stringToParse
     this.#tokenContainer = new Tokenizer(this.#grammar, this.#stringToParse)
-    this.#currentSentence = []
     while (this.#tokenContainer.getActiveToken().tokenValue !== 'END') {
       const token = this.#tokenContainer.getActiveToken()
       this.#currentSentence.push(token.tokenValue)
       if (token.tokenType !== 'WORD') {
         this.#sentences.add({'type': `${token.tokenType}`, 'sentence': this.#currentSentence})
+        this.#currentSentence = []
       }
         this.#tokenContainer.setActiveTokenToNext()
     }
