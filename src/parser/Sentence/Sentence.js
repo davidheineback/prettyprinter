@@ -19,25 +19,19 @@ export default class Sentence {
     
   }
 
-  sentenceContainsAtLeastOneWord() {
-    //check if string qualify as sentenece
-  }
+  // sentenceContainsAtLeastOneWord() {
+  //   //check if string qualify as sentenece
+  // }
 
-  reParseSentence() {
-    // de enskilda orden separeras med ett enda mellanslag oavsett vilka whitespace som användes i orginaltexten. 
-  }
+  // getNextWord() {
+  //   // Klasserna för “en vanlig mening”, uttrop och frågor skall alla ha funktionalitet för att:
+  //   // stega igenom WORD-objekt som meningen består av.
+  // }
 
-  getNextWord() {
-    // Klasserna för “en vanlig mening”, uttrop och frågor skall alla ha funktionalitet för att:
-    // stega igenom WORD-objekt som meningen består av.
-  }
+  // getPreviousWord() {
+  //   // Klasserna för “en vanlig mening”, uttrop och frågor skall alla ha funktionalitet för att:
+  //   // stega igenom WORD-objekt som meningen består av.
 
-  getPreviousWord() {
-    // Klasserna för “en vanlig mening”, uttrop och frågor skall alla ha funktionalitet för att:
-    // stega igenom WORD-objekt som meningen består av.
-
-  }
-
-
+  // }
 
 }
