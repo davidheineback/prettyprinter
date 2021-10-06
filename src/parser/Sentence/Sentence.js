@@ -1,9 +1,10 @@
 export default class Sentence {
   #sentenceObject
+  #endCharacter
 
   constructor(sentenceObject) {
     this.#sentenceObject = sentenceObject
-    this.endCharacter 
+    this.#endCharacter 
   }
 
   getSenteceAsObject() {
@@ -15,7 +16,7 @@ export default class Sentence {
     this.#sentenceObject.sentence.forEach(word => {
         fullSentence += `${word} `
     })
-    return fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`)
+    return fullSentence.replace(/.{0,3}$/, `${this.#endCharacter}`)
   }
 
   sentenceContainsAtLeastOneWord() {
