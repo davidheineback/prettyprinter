@@ -27,10 +27,10 @@ export default class Sentences {
         break
     }
 
-    this.sentences.forEach(sentence => {
-      console.log(sentence.getSenteceAsObject())
-      console.log(sentence.getSentenceAsString())
-    })
+    // this.sentences.forEach(sentence => {
+    //   console.log(sentence.getSenteceAsObject())
+    //   console.log(sentence.getSentenceAsString())
+    // })
   }
 
   getSentences() {
