@@ -31,7 +31,6 @@ export default class Document {
       }
         this.#tokenContainer.setActiveTokenToNext()
     }
-    return 
   }
 
   getAllSentences() {
