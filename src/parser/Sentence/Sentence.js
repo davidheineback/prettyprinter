@@ -6,7 +6,7 @@ export default class Sentence {
     this.endCharacter 
   }
 
-  getSenteceAsObject() {
+  getSentenceAsObject() {
     return this.#sentenceObject
   }
 
