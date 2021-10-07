@@ -7,30 +7,21 @@ export default class Sentences {
     this.sentences = []
   }
 
-  /**
-   *
-   * @param {*} sentence
-   * @memberof Sentences
-   */
   add(sentence) {
+    this.sentences.push(this.#createSenteceByTypeOf(sentence))
+  }
+
+  #createSenteceByTypeOf(sentence) {
     switch(sentence.type) {
       case 'DOT':
-        this.sentences.push(new RegularSentence(sentence))
-        break
+        return new RegularSentence(sentence)
       case 'EXCLAMATION':
-        this.sentences.push(new ExclamationSentence(sentence))
-        break
+        return new ExclamationSentence(sentence)
       case 'QUESTION':
-        this.sentences.push(new QuestionSentence(sentence))
-        break
+        return new QuestionSentence(sentence)
       default:
         break
     }
-
-    // this.sentences.forEach(sentence => {
-    //   console.log(sentence.getSenteceAsObject())
-    //   console.log(sentence.getSentenceAsString())
-    // })
   }
 
   getSentences() {
