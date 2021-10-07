@@ -38,14 +38,14 @@ export default class Document {
   }
 
   getAllRegularSentences() {
-    return this.#sentences.getSentences().filter(sentence => sentence instanceof RegularSentence)
+    return this.getAllSentences().filter(sentence => sentence instanceof RegularSentence)
   }
 
   getAllExclamationSentences() {
-    return this.#sentences.getSentences().filter(sentence => sentence instanceof ExclamationSentence)
+    return this.getAllSentences().filter(sentence => sentence instanceof ExclamationSentence)
   }
 
   getAllQuestionSentences() {
-    return this.#sentences.getSentences().filter(sentence => sentence instanceof QuestionSentence)
+    return this.getAllSentences().filter(sentence => sentence instanceof QuestionSentence)
   }
 }
