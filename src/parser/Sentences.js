@@ -2,13 +2,12 @@ import RegularSentence from "./sentence/RegularSentence.js"
 import ExclamationSentence from "./sentence/ExclamationSentence.js"
 import QuestionSentence from "./sentence/QuestionSentence.js"
 
-export default class Sentences {
+export default class Sentences extends Array {
   constructor() {
-    this.sentences = []
+    super()
   }
-
-  add(sentence) {
-    this.sentences.push(this.#createSenteceByTypeOf(sentence))
+    add(sentence) {
+    this.push(this.#createSenteceByTypeOf(sentence))
   }
 
   #createSenteceByTypeOf(sentence) {
@@ -23,9 +22,4 @@ export default class Sentences {
         break
     }
   }
-
-  getSentences() {
-    return this.sentences
-  }
-
 }
