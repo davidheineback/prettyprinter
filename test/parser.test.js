@@ -48,7 +48,7 @@ describe('Tests Document class.', () => {
     const document = new Document()
     document.parse('Hello World. Hello again! Hello? Hello Again.')
     document.getAllRegularSentences().forEach(sentence => {
-      expect(sentence.getSenteceAsObject().type).toEqual('REGULAR')
+      expect(sentence.getSentenceAsObject().type).toEqual('REGULAR')
     })
   })
 
