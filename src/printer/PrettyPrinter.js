@@ -1,5 +1,6 @@
 import Document from '../parser/Document.js'
 import Styles from './styles/Styles.js'
+import SentenceViewFactory from './Views/SentenceViewFactory.js'
 
 
 export default class PrettyPrinter {
@@ -12,12 +13,9 @@ export default class PrettyPrinter {
         document.parse(string)
         
         let sentences = document.getAllSentences()
-
-        /// If getAllSentences returns array instead of object. remove .getSentences here.
         sentences.forEach((sentence, index) => {
-          console.log(`Index ${index}:`)
-          console.log(Styles.getStyleForTypeOf(sentence), sentence.getSentenceAsString())
-          console.log('')
+          const sentenceView = new SentenceViewFactory().createSentenceView(sentence)
+          sentenceView.print(sentence.getSentenceAsString(), index)
         })
       
       } catch (error) {
