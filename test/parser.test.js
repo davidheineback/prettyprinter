@@ -15,7 +15,7 @@ describe('Tests Document class.', () => {
   it('TC2.1 - running method getAllRegularSentences should return an array only containing all regular sentences', () => {
     const document = new Document()
     document.parse('Hello World. Hello again! Hello? Hello Again.')
-    document.getAllRegularSentences().forEach(sentence => {
+    document.getAllSentences().getAllRegularSentences().forEach(sentence => {
       expect(sentence instanceof RegularSentence).toEqual(true)
     })
   })
@@ -23,31 +23,31 @@ describe('Tests Document class.', () => {
   it('TC2.2 - running method getAllRegularSentences on Hello World. Hello again! Hello? Hello Again. should have length 2', () => {
     const document = new Document()
     document.parse('Hello World. Hello again! Hello? Hello Again.')
-    expect(document.getAllRegularSentences().length).toEqual(2)
+    expect(document.getAllSentences().getAllRegularSentences().length).toEqual(2)
   })
 
   it('TC3 - running method getAllExclamationSentences should return an array only containing all regular sentences', () => {
     const document = new Document()
     document.parse('Hello World. Hello again! Hello? Hello Again.')
-    document.getAllExclamationSentences().forEach(sentence => {
+    document.getAllSentences().getAllExclamationSentences().forEach(sentence => {
       expect(sentence instanceof ExclamationSentence).toEqual(true)
     })
-    expect(document.getAllExclamationSentences().length).toEqual(1)
+    expect(document.getAllSentences().getAllExclamationSentences().length).toEqual(1)
   })
 
   it('TC4 - running method getAllQuestionSentences should return an array only containing all regular sentences', () => {
     const document = new Document()
     document.parse('Hello World. Hello again! Hello? Hello Again.')
-    document.getAllQuestionSentences().forEach(sentence => {
+    document.getAllSentences().getAllQuestionSentences().forEach(sentence => {
       expect(sentence instanceof QuestionSentence).toEqual(true)
     })
-    expect(document.getAllQuestionSentences().length).toEqual(1)
+    expect(document.getAllSentences().getAllQuestionSentences().length).toEqual(1)
   })
 
   it('TC5 - running method getSentenceAsObject on a RegularSentence should return type "REGULAR" ', () => {
     const document = new Document()
     document.parse('Hello World. Hello again! Hello? Hello Again.')
-    document.getAllRegularSentences().forEach(sentence => {
+    document.getAllSentences().getAllRegularSentences().forEach(sentence => {
       expect(sentence.getSentenceAsObject().type).toEqual('REGULAR')
     })
   })
@@ -55,6 +55,6 @@ describe('Tests Document class.', () => {
   it('TC6 - running method getSentenceAsObject on a RegularSentence should return type "REGULAR" ', () => {
     const document = new Document()
     document.parse('Hello World. Hello again! Hello? Hello Again.')
-    expect(document.getAllRegularSentences()[0].getSentenceAsString()).toEqual('Hello World.')
+    expect(document.getAllSentences().getAllRegularSentences()[0].getSentenceAsString()).toEqual('Hello World.')
   })
 })
