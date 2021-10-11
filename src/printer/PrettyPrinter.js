@@ -13,6 +13,7 @@ export default class PrettyPrinter {
         
         let sentences = document.getAllSentences()
 
+        /// If getAllSentences returns array instead of object. remove .getSentences here.
         sentences.forEach((sentence, index) => {
           console.log(`Index ${index}:`)
           console.log(Styles.getStyleForTypeOf(sentence), sentence.getSentenceAsString())
@@ -20,7 +21,7 @@ export default class PrettyPrinter {
         })
       
       } catch (error) {
-        console.error(Styles.getTypeStyle(error),error.message)
+        console.error(Styles.getStyleForTypeOf(error),error.message)
       }
   }
 }
