@@ -22,4 +22,16 @@ export default class Sentences extends Array {
         break
     }
   }
+
+  getAllRegularSentences() {
+    return this.filter(sentence => sentence instanceof RegularSentence)
+  }
+
+  getAllExclamationSentences() {
+    return this.filter(sentence => sentence instanceof ExclamationSentence)
+  }
+
+  getAllQuestionSentences() {
+    return this.filter(sentence => sentence instanceof QuestionSentence)
+  }
 }
