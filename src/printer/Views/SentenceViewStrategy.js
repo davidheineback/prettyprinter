@@ -1,4 +1,4 @@
-export default class SentenceViewFacade {
+export default class SentenceViewStrategy {
   constructor() {
     this.style
   }

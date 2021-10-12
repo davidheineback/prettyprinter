@@ -1,6 +1,6 @@
-import SentenceViewFacade from "./SentenceViewFacade.js"
+import SentenceViewStrategy from "./SentenceViewStrategy.js"
 
-export default class QuestionSentenceView extends SentenceViewFacade {
+export default class QuestionSentenceView extends SentenceViewStrategy {
   
   constructor () {
     super()
