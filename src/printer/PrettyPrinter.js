@@ -1,5 +1,5 @@
 import Document from '../parser/Document.js'
-import SentenceViewFactory from './Views/SentenceViewFactory.js'
+import SentenceViewFactory from './views/SentenceViewFactory.js'
 
 
 export default class PrettyPrinter {
