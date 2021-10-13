@@ -9,7 +9,7 @@ export default class PrettyPrinter {
         const document = new Document()
         document.parse(string)
         const sentenceViewFactory = new SentenceViewFactory()
-        sentenceViewFactory.printDescriptionOfStyles()
+        sentenceViewFactory.createSentenceView().printDescriptionOfStyles()
         
         let sentences = document.getAllSentences()
         sentences.forEach((sentence, index) => {
