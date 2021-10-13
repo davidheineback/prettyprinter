@@ -1,6 +1,7 @@
 import RegularSentence from "./sentence/RegularSentence.js"
 import ExclamationSentence from "./sentence/ExclamationSentence.js"
 import QuestionSentence from "./sentence/QuestionSentence.js"
+import Sentence from "./sentence/Sentence.js"
 
 export default class Sentences extends Array {
   constructor() {
@@ -19,7 +20,7 @@ export default class Sentences extends Array {
       case 'QUESTION':
         return new QuestionSentence(sentence)
       default:
-        break
+        return new Sentence(sentence)
     }
   }
 
