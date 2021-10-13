@@ -15,8 +15,9 @@ export default class Sentence {
     this.#sentenceObject.sentence.forEach(word => {
         fullSentence += `${word} `
     })
-    return fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`)
-    
+    return this.endCharacter ?
+      fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`) 
+      : fullSentence.trim()
   }
 
   // getNextWord() {
