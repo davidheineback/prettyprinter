@@ -10,4 +10,8 @@ export default class Validator {
   isValidEndToken(type) {
     return this.validTypes.includes(type)
   }
+
+  isInValidEndOfSentence(newTokenType, previousTokenType) {
+    return newTokenType === 'END' && !this.isValidEndToken(previousTokenType)
+  }
 }
