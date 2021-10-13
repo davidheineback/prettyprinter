@@ -1,26 +1,16 @@
 import PrettyPrinter from '../printer/PrettyPrinter.js'
-import readline from 'readline'
+import Readline from './ReadLine.js'
 
 export default class Parser {
+  #printer = new PrettyPrinter()
+  #reader = new Readline()
 
   constructor() {
-    this.#readCommandLine()
+    this.#main()
   }
 
-  #readCommandLine() {
-    const printer = new PrettyPrinter()
-
-    const readCommandLine = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    })
-    
-    readCommandLine.question('Write a document as a string: ', (document) => {
-      printer.print(document)
-      readCommandLine.close()
-    })
-    
-    readCommandLine.on("close", () => process.exit(0))
+  async #main() {
+    this.#printer.print(await this.#reader.getDocument())
   }
 }
 
