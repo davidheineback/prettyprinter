@@ -12,8 +12,8 @@ export default class Sentence {
 
   getSentenceAsString() {
     let fullSentence = ''
-    this.#sentenceObject.sentence.forEach(word => {
-      fullSentence += `${word} `
+    this.#sentenceObject.sentence.forEach(part => {
+      fullSentence += `${part.tokenValue} `
     })
     return this.endCharacter ?
       fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`)
