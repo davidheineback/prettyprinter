@@ -23,10 +23,17 @@ export default class Document {
     this.#tokenContainer = new Tokenizer(this.#grammar, this.#stringToParse)
     while (this.#tokenContainer.getActiveToken().tokenValue !== 'END') {
       const token = this.#tokenContainer.getActiveToken()
-      this.#currentSentence.push(token.tokenValue)
-      if (this.#validator.isValidEndToken(token.tokenType) && this.#currentSentence.length > 1) {
-        this.#sentences.add({ 'type': `${token.tokenType}`, 'sentence': this.#currentSentence })
-        this.#currentSentence = []
+      this.#currentSentence.push(token)
+      if (this.isValid()) {
+      // if (this.#validator.isValidEndToken(token.tokenType)) {
+        if(this.#validator.isValidSentenceLength(this.#currentSentence.length)) {
+          this.#sentences.add({ 'type': `${token.tokenType}`, 'sentence': this.#currentSentence })
+          this.#currentSentence = []
+        } else {
+          this.#sentences.add({ 'type': 'SYNTAX ERROR', 'sentence': this.#currentSentence })
+          const syntaxErrorSentence = this.#sentences[this.#sentences.length - 1].getSentenceAsString()
+          throw new Error(`${syntaxErrorSentence} is not a valid syntax for a sentence`)
+        }
       }
       this.#tokenContainer.setActiveTokenToNext()
       if (this.#validator.isInValidEndOfSentence(this.#tokenContainer.getActiveToken().tokenType, token.tokenType)) {
@@ -34,8 +41,12 @@ export default class Document {
         const syntaxErrorSentence = this.#sentences[this.#sentences.length - 1].getSentenceAsString()
         throw new Error(`Whoops, incorrect ending of sentence: ${syntaxErrorSentence}`)
       }
-
     }
+  }
+
+  isValid() {
+    const currentToken = this.#currentSentence.slice(-1)[0]
+    return this.#validator.isValidEndToken(currentToken.tokenType)
   }
 
   getAllSentences() {
