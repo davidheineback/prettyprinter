@@ -1,14 +1,18 @@
 export default class Validator {
+  #validTypes
+  #validLength
+
   constructor() {
-    this.validTypes = ['DOT', 'EXCLAMATION', 'QUESTION']
+    this.#validTypes = ['DOT', 'EXCLAMATION', 'QUESTION']
+    this.#validLength = 1
   }
 
-  sentenceContainsAtLeastOneWord() {
-    //check if string qualify as sentenece
+  isValidSentenceLength(length) {
+    return length > this.#validLength
   }
 
   isValidEndToken(type) {
-    return this.validTypes.includes(type)
+    return this.#validTypes.includes(type)
   }
 
   isInValidEndOfSentence(newTokenType, previousTokenType) {
