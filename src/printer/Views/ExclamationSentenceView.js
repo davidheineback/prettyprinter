@@ -1,6 +1,5 @@
 import SentenceViewStrategy from "./SentenceViewStrategy.js"
 
-
 export default class ExclamationSentenceView extends SentenceViewStrategy {
   constructor () {
     super()

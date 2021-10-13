@@ -14,21 +14,21 @@ export default class Readline {
 
   #getUserInput() {
     const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
+      input: process.stdin,
+      output: process.stdout
     })
 
     return new Promise(resolve => {
-        rl.question('Write a document as a string: ', document => {
-            rl.close()
-            return resolve(document)
-        })
+      rl.question('Write a document as a string: ', document => {
+        rl.close()
+        return resolve(document)
+      })
     })
-}
+  }
 
-getDocument() {
-  return this.#document
-}
+  getDocument() {
+    return this.#document
+  }
 
 }
 

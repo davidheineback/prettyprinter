@@ -3,7 +3,7 @@ export default class Sentence {
 
   constructor(sentenceObject) {
     this.#sentenceObject = sentenceObject
-    this.endCharacter 
+    this.endCharacter
   }
 
   getSentenceAsObject() {
@@ -13,10 +13,10 @@ export default class Sentence {
   getSentenceAsString() {
     let fullSentence = ''
     this.#sentenceObject.sentence.forEach(word => {
-        fullSentence += `${word} `
+      fullSentence += `${word} `
     })
     return this.endCharacter ?
-      fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`) 
+      fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`)
       : fullSentence.trim()
   }
 

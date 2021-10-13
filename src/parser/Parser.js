@@ -9,10 +9,7 @@ export default class Parser {
     this.#main()
   }
 
-  async #main() {
+  async #main() {
     this.#printer.print(await this.#reader.getDocument())
   }
 }
-
-
-

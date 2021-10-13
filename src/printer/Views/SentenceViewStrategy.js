@@ -8,7 +8,7 @@ export default class SentenceViewStrategy {
     console.log(this.style, sentenceAsString)
     console.log('')
   }
-  
+
   printDescriptionOfStyles() {
     console.log('')
     console.log('\x1b[36m\x1b[1m%s\x1b[0m', 'Regular sentence')

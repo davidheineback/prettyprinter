@@ -7,12 +7,12 @@ export default class Sentences extends Array {
   constructor() {
     super()
   }
-    add(sentence) {
+  add(sentence) {
     this.push(this.#createSenteceByTypeOf(sentence))
   }
 
   #createSenteceByTypeOf(sentence) {
-    switch(sentence.type) {
+    switch (sentence.type) {
       case 'DOT':
         return new RegularSentence(sentence)
       case 'EXCLAMATION':

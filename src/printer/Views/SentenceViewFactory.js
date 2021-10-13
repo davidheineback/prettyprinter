@@ -8,12 +8,12 @@ import SentenceViewStrategy from './SentenceViewStrategy.js'
 import ErrorView from './ErrorView.js'
 
 export default class SentenceViewFactory {
-  
-  constructor () {
+
+  constructor() {
   }
 
   createSentenceView(sentence) {
-    switch(true) {
+    switch (true) {
       case sentence instanceof RegularSentence:
         return new RegularSentenceView
       case sentence instanceof ExclamationSentence:

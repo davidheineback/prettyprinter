@@ -1,5 +1,5 @@
 export default class Validator {
-  constructor() {
+  constructor() {
     this.validTypes = ['DOT', 'EXCLAMATION', 'QUESTION']
   }
 
