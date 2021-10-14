@@ -4,14 +4,14 @@ import QuestionSentence from "./sentence/QuestionSentence.js"
 import SentenceFactory from "./sentence/SentenceFactory.js"
 
 export default class Sentences extends Array {
+  #sentenceFactory = new SentenceFactory()
 
   constructor() {
     super()
   }
 
   createSentence(sentenceObject) {
-    const sentenceFactory = new SentenceFactory()
-    return sentenceFactory.createSentence(sentenceObject)
+    return this.#sentenceFactory.createSentence(sentenceObject)
   }
 
   getAllRegularSentences() {
