@@ -1,6 +1,5 @@
 import tokenizer from '@david-heineback/tokenizer'
 import SentenceGrammar from '../grammars/SentenceGrammar.js'
-import SentenceFactory from './sentence/SentenceFactory.js'
 import Sentences from './Sentences.js'
 import Validator from './Validator.js'
 
