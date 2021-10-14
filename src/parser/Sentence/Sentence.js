@@ -19,10 +19,4 @@ export default class Sentence {
       fullSentence.replace(/.{0,3}$/, `${this.endCharacter}`)
       : fullSentence.trim()
   }
-
-  // getNextWord() {
-  //   // Klasserna för “en vanlig mening”, uttrop och frågor skall alla ha funktionalitet för att:
-  //   // stega igenom WORD-objekt som meningen består av.
-  // }
-
 }
