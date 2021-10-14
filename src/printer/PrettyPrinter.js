@@ -5,7 +5,6 @@ import SentenceViewFactory from './views/SentenceViewFactory.js'
 export default class PrettyPrinter {
 
   print(string) {
-      try {
         const document = new Document()
         document.parse(string)
         const sentenceViewFactory = new SentenceViewFactory()
@@ -16,10 +15,5 @@ export default class PrettyPrinter {
           const sentenceView = sentenceViewFactory.createSentenceView(sentence)
           sentenceView.print(sentence.getSentenceAsString(), index)
         })
-      
-      } catch (error) {
-        const sentenceViewFactory = new SentenceViewFactory()
-        sentenceViewFactory.createSentenceView(error).print(error.message)
-      }
   }
 }
