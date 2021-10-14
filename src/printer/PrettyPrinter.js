@@ -11,7 +11,7 @@ export default class PrettyPrinter {
         const sentenceViewFactory = new SentenceViewFactory()
         sentenceViewFactory.createSentenceView().printDescriptionOfStyles()
         
-        let sentences = document.getAllSentences()
+        const sentences = document.getAllSentences()
         sentences.forEach((sentence, index) => {
           const sentenceView = sentenceViewFactory.createSentenceView(sentence)
           sentenceView.print(sentence.getSentenceAsString(), index)
