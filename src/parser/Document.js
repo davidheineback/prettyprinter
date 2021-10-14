@@ -23,7 +23,7 @@ export default class Document {
       const token = this.#tokenContainer.getActiveToken()
       this.#currentSentence.push(token)
       if (this.hasValidEnd()) {
-        if(this.#validator.isValidSentenceLength(this.#currentSentence.length)) {
+        if (this.#validator.isValidSentenceLength(this.#currentSentence.length)) {
           this.#sentences.add({ 'type': `${token.tokenType}`, 'sentence': this.#currentSentence })
           this.#currentSentence = []
         } else {
