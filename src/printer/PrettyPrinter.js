@@ -1,13 +1,17 @@
 import SentenceViewFactory from './views/SentenceViewFactory.js'
 
-
 export default class PrettyPrinter {
+  #sentenceViewFactory = new SentenceViewFactory()
+
   print(sentences) {
-    const sentenceViewFactory = new SentenceViewFactory()
-    sentenceViewFactory.createSentenceView().printDescriptionOfStyles()
+    this.#sentenceViewFactory.createSentenceView().printDescriptionOfStyles()
     sentences.forEach((sentence, index) => {
-      const sentenceView = sentenceViewFactory.createSentenceView(sentence)
+      const sentenceView = this.#sentenceViewFactory.createSentenceView(sentence)
       sentenceView.print(sentence.getSentenceAsString(), index)
     })
+  }
+
+  printError(error) {
+      this.#sentenceViewFactory.createSentenceView(error).print(error.message)
   }
 }

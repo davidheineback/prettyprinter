@@ -17,8 +17,7 @@ export default class Parser {
       document.parse(await reader.getDocument())
       this.#printer.print(document.getAllSentences())
     } catch (error) {
-      const sentenceViewFactory = new SentenceViewFactory()
-      sentenceViewFactory.createSentenceView(error).print(error.message)
+      this.#printer.printError(error)
       this.#main()
     }
   }
