@@ -1,5 +1,6 @@
 import tokenizer from '@david-heineback/tokenizer'
 import SentenceGrammar from '../grammars/SentenceGrammar.js'
+import SentenceFactory from './sentence/SentenceFactory.js'
 import Sentences from './Sentences.js'
 import Validator from './Validator.js'
 
@@ -24,7 +25,8 @@ export default class Document {
       this.#currentSentence.push(token)
       if (this.hasValidEnd()) {
         if (this.#validator.isValidSentenceLength(this.#currentSentence.length)) {
-          this.#sentences.add({ 'type': `${token.tokenType}`, 'sentence': this.#currentSentence })
+          const newSentence = this.#sentences.createSentence({ 'type': `${token.tokenType}`, 'sentence': this.#currentSentence })
+          this.#sentences.push(newSentence)
           this.#currentSentence = []
         } else {
           throw new Error(`Syntax error: "${this.#errorSentence()}" is not a valid syntax for a sentence`)
@@ -42,8 +44,8 @@ export default class Document {
   }
 
   #errorSentence() {
-    this.#sentences.add({ 'type': 'SYNTAX ERROR', 'sentence': this.#currentSentence })
-    return this.#sentences.slice(-1)[0].getSentenceAsString()
+    const newSentence = this.#sentences.createSentence({ 'type': 'SYNTAX ERROR', 'sentence': this.#currentSentence })
+    return newSentence.getSentenceAsString()
   }
 
   hasValidEnd() {
