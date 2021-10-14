@@ -1,5 +1,4 @@
 import PrettyPrinter from '../printer/PrettyPrinter.js'
-import SentenceViewFactory from '../printer/views/SentenceViewFactory.js'
 import Readline from '../parser/ReadLine.js'
 import Document from '../parser/Document.js'
 
