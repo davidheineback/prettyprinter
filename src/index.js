@@ -1,3 +1,3 @@
-import Parser from './parser/Parser.js'
+import Parser from './facade/Parser.js'
 
 new Parser()

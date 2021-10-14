@@ -1,6 +1,6 @@
 import PrettyPrinter from '../printer/PrettyPrinter.js'
 import SentenceViewFactory from '../printer/views/SentenceViewFactory.js'
-import Readline from './ReadLine.js'
+import Readline from '../parser/ReadLine.js'
 
 export default class Parser {
   #printer = new PrettyPrinter()
