@@ -2,59 +2,85 @@ import Document from '../src/parser/Document.js'
 import RegularSentence from '../src/parser/sentence/RegularSentence.js'
 import ExclamationSentence from '../src/parser/sentence/ExclamationSentence.js'
 import QuestionSentence from '../src/parser/sentence/QuestionSentence.js'
+import Sentence from '../src/parser/sentence/Sentence.js'
 
-describe('Tests Document class.', () => {
+describe('TC1 Tests Document class with string "Hello World. Hello again! Hello! Hello? Anyone?"', () => {
+  const document = new Document()
+  document.parse('Hello World. Hello again! Hello! Hello? Anyone?')
 
-  it('TC1 - running method getAllSentences should return an array with all sentences', () => {
-    const stringToTest = 'Hello World. Hello again! Hello?'
-    const document = new Document()
-    document.parse('Hello World. Hello again! Hello?')
-    expect(document.getAllSentences().length).toEqual(3)
+  it('TC1.1 - running method getAllSentences should return an array with sentence objects', () => {
+    document.getAllSentences().forEach(sentence => {
+      expect(sentence instanceof Sentence).toEqual(true)
+    })
   })
 
-  it('TC2.1 - running method getAllRegularSentences should return an array only containing all regular sentences', () => {
-    const document = new Document()
-    document.parse('Hello World. Hello again! Hello? Hello Again.')
+  it('TC1.2 - running method getAllRegularSentences should return an array only containing sentences of type RegularSentence', () => {
     document.getAllSentences().getAllRegularSentences().forEach(sentence => {
       expect(sentence instanceof RegularSentence).toEqual(true)
     })
   })
 
-  it('TC2.2 - running method getAllRegularSentences on Hello World. Hello again! Hello? Hello Again. should have length 2', () => {
-    const document = new Document()
-    document.parse('Hello World. Hello again! Hello? Hello Again.')
-    expect(document.getAllSentences().getAllRegularSentences().length).toEqual(2)
-  })
-
-  it('TC3 - running method getAllExclamationSentences should return an array only containing all regular sentences', () => {
-    const document = new Document()
-    document.parse('Hello World. Hello again! Hello? Hello Again.')
-    document.getAllSentences().getAllExclamationSentences().forEach(sentence => {
-      expect(sentence instanceof ExclamationSentence).toEqual(true)
-    })
-    expect(document.getAllSentences().getAllExclamationSentences().length).toEqual(1)
-  })
-
-  it('TC4 - running method getAllQuestionSentences should return an array only containing all regular sentences', () => {
-    const document = new Document()
-    document.parse('Hello World. Hello again! Hello? Hello Again.')
-    document.getAllSentences().getAllQuestionSentences().forEach(sentence => {
-      expect(sentence instanceof QuestionSentence).toEqual(true)
-    })
-    expect(document.getAllSentences().getAllQuestionSentences().length).toEqual(1)
-  })
-
-  it('TC5 - running method getSentenceAsObject on a RegularSentence should return type "REGULAR" ', () => {
-    const document = new Document()
-    document.parse('Hello World. Hello again! Hello? Hello Again.')
+  it('TC1.3 - running method getSentenceAsObject on a RegularSentence should return type "REGULAR" ', () => {
     document.getAllSentences().getAllRegularSentences().forEach(sentence => {
       expect(sentence.getSentenceAsObject().type).toEqual('REGULAR')
     })
   })
 
-  it('TC6 - running method getSentenceAsObject on a RegularSentence should return type "REGULAR" ', () => {
-    const document = new Document()
-    document.parse('Hello World. Hello again! Hello? Hello Again.')
+  it('TC1.4 - running method getSentenceAsString on the first RegularSentence should return string "Hello World." ', () => {
     expect(document.getAllSentences().getAllRegularSentences()[0].getSentenceAsString()).toEqual('Hello World.')
+  })
+
+  it('TC1.5 - running method getAllExclamationSentences should return an array only containing sentences of type ExclamationSentence', () => {
+    document.getAllSentences().getAllExclamationSentences().forEach(sentence => {
+      expect(sentence instanceof ExclamationSentence).toEqual(true)
+    })
+  })
+
+  it('TC1.6 - running method getSentenceAsObject on a ExclamationSentence should return type "EXCLAMATION" ', () => {
+    document.getAllSentences().getAllExclamationSentences().forEach(sentence => {
+      expect(sentence.getSentenceAsObject().type).toEqual('EXCLAMATION')
+    })
+  })
+
+  it('TC1.7 - running method getSentenceAsString on the second ExclamationSentence should return string "Hello!" ', () => {
+    expect(document.getAllSentences().getAllExclamationSentences()[1].getSentenceAsString()).toEqual('Hello!')
+  })
+
+  it('TC1.8 - running method getAllQuestionSentences should return an array only containing sentences of type QuestionSentence', () => {
+    document.getAllSentences().getAllQuestionSentences().forEach(sentence => {
+      expect(sentence instanceof QuestionSentence).toEqual(true)
+    })
+  })
+
+  it('TC1.9 - running method getSentenceAsObject on a QuestionSentence should return type "QUESTION" ', () => {
+    document.getAllSentences().getAllQuestionSentences().forEach(sentence => {
+      expect(sentence.getSentenceAsObject().type).toEqual('QUESTION')
+    })
+  })
+
+  it('TC1.10 - running method getSentenceAsString on the second QuestionSentence should return string "Anyone?" ', () => {
+    expect(document.getAllSentences().getAllQuestionSentences()[1].getSentenceAsString()).toEqual('Anyone?')
+  })
+})
+
+
+describe('TC2 Test that length is as expected with string "Hello World. Hello again! Hello! Hello? Anyone?"', () => {
+  const document = new Document()
+  document.parse('Hello World. Hello again! Hello! Hello? Anyone?')
+
+  it('TC2.1 - running method getAllSentences should return an array with length 5', () => {
+    expect(document.getAllSentences().length).toEqual(5)
+  })
+
+  it('TC2.2 - running method getAllRegularSentences should have length 1', () => {
+    expect(document.getAllSentences().getAllRegularSentences().length).toEqual(1)
+  })
+
+  it('TC2.3 - running method getAllExclamationSentences should have length 2', () => {
+    expect(document.getAllSentences().getAllExclamationSentences().length).toEqual(2)
+  })
+
+  it('TC2.4 - running method getAllQuestionSentences should have length 2', () => {
+    expect(document.getAllSentences().getAllQuestionSentences().length).toEqual(2)
   })
 })
