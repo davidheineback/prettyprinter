@@ -63,7 +63,6 @@ describe('TC1 Tests Document class with string "Hello World. Hello again! Hello!
   })
 })
 
-
 describe('TC2 Test that length is as expected with string "Hello World. Hello again! Hello! Hello? Anyone?"', () => {
   const document = new Document()
   document.parse('Hello World. Hello again! Hello! Hello? Anyone?')
@@ -82,5 +81,21 @@ describe('TC2 Test that length is as expected with string "Hello World. Hello ag
 
   it('TC2.4 - running method getAllQuestionSentences should have length 2', () => {
     expect(document.getAllSentences().getAllQuestionSentences().length).toEqual(2)
+  })
+})
+
+describe('TC3 Test Error handling', () => {
+  const document = new Document()
+
+  it('TC3.1 - Parsing a sentence without correct ending throws error', () => {
+    expect(() => {
+      document.parse('Hello World')
+    }).toThrow()
+  })
+
+  it('TC3.2 - Parsing a sentence without containing incorrect sentence build throws error', () => {
+    expect(() => {
+      document.parse('Hello World..')
+    }).toThrow()
   })
 })
