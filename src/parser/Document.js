@@ -55,4 +55,16 @@ export default class Document {
   getAllSentences() {
     return this.#sentences
   }
+
+  getAllRegularSentences() {
+    return this.#sentences.getAllRegularSentences()
+  }
+
+  getAllExclamationSentences() {
+    return this.#sentences.getAllExclamationSentences()
+  }
+
+  getAllQuestionSentences() {
+    return this.#sentences.getAllQuestionSentences()
+  }
 }
