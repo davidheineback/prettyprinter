@@ -2,7 +2,7 @@ import PrettyPrinter from '../printer/PrettyPrinter.js'
 import Readline from '../parser/ReadLine.js'
 import Document from '../parser/Document.js'
 
-export default class Parser {
+export default class ParserFacade {
   #printer = new PrettyPrinter()
 
   constructor() {
