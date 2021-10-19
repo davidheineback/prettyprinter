@@ -1,6 +1,8 @@
+import parser from '@david-heineback/parser/src/index.js'
 import PrettyPrinter from '../printer/PrettyPrinter.js'
-import Readline from '../parser/ReadLine.js'
-import Document from '../parser/Document.js'
+
+
+const { Document, Readline } = parser
 
 export default class ParserFacade {
   #printer = new PrettyPrinter()
