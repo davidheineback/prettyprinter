@@ -1,5 +1,5 @@
 {
-  "name": "l2",
+  "name": "l2-printer",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.lnu.se:1dv610/student/du222aa/l2.git"
+    "url": "git+https://github.com/davidheineback/prettyprinter.git"
   },
   "keywords": [],
   "author": "",
