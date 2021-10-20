@@ -26,7 +26,7 @@
     ]
   },
   "dependencies": {
-    "@david-heineback/parser": "^1.0.3",
+    "@david-heineback/parser": "^1.0.4",
     "@david-heineback/tokenizer": "^1.1.5",
     "cross-env": "^7.0.3"
   }
