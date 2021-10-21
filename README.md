@@ -1,7 +1,7 @@
 # Pretty Printer
 
 ### How to install:
-    Clone the repostory and install dependecies with npm install
+    Clone the repository and install dependencies with npm install
 
 ### How to use:
  After installed run the npm start command in the terminal and then typ the string you want to parse. Submit your sentences for parsing by pressing enter when you are done.  
